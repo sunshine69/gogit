@@ -11,7 +11,7 @@ import (
 	git "github.com/go-git/go-git/v5"
 	u "github.com/sunshine69/golang-tools/utils"
 	gitu "github.com/whilp/git-urls"
-	"golang.org/x/term"
+	"golang.org/x/crypto/ssh/terminal"
 	"gopkg.in/ini.v1"
 )
 
@@ -37,6 +37,10 @@ func main() {
 	cfg := ParseGitConfig(gitConfig)
 
 	args := flag.Args()
+	if len(args) == 0 {
+		panic("Usage: gitg <action> <option>.")
+	}
+
 	action = args[0]
 
 	switch action {
@@ -80,7 +84,7 @@ func main() {
 
 func GetPassword() string {
 	fmt.Println("Enter Password:")
-	bytePassword, err := term.ReadPassword(int(syscall.Stdin))
+	bytePassword, err := terminal.ReadPassword(int(syscall.Stdin))
 	u.CheckErr(err, "ReadPassword")
 	return string(bytePassword)
 }
