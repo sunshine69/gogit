@@ -10,7 +10,7 @@ import (
 )
 
 func Clone(url, directory, privateKeyFile, password string) {
-	// CheckArgs("<url>", "<directory>", "<private_key_file>")
+	fmt.Printf("url: %s - directory: %s key: %s\n", url, directory, privateKeyFile)
 
 	_, err := os.Stat(privateKeyFile)
 	u.CheckErr(err, "privateKeyFile")
@@ -35,6 +35,7 @@ func Clone(url, directory, privateKeyFile, password string) {
 	u.CheckErr(err, "Head")
 	// ... retrieving the commit object
 	commit, err := r.CommitObject(ref.Hash())
+
 	u.CheckErr(err, "CommitObject")
 
 	fmt.Println(commit)
