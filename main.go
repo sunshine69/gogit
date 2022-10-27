@@ -65,6 +65,7 @@ func main() {
 
 func GetPassword() string {
 	fmt.Println("Enter Password:")
+	// On windows bash it has error (bug but nobody cares). SO if run won window, just run using the window dos (cmd) console
 	bytePassword, err := terminal.ReadPassword(int(syscall.Stdin))
 	u.CheckErr(err, "ReadPassword")
 	return string(bytePassword)
