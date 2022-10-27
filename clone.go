@@ -16,7 +16,7 @@ func Clone(url, directory, privateKeyFile, password string) {
 	u.CheckErr(err, "privateKeyFile")
 
 	// Clone the given repository to the given directory
-	fmt.Printf("git clone %s ", url)
+	fmt.Printf("git clone %s\n", url)
 	publicKeys, err := ssh.NewPublicKeysFromFile("git", privateKeyFile, password)
 	u.CheckErr(err, "NewPublicKeysFromFile")
 

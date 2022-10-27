@@ -49,7 +49,7 @@ func main() {
 		gitUrl := args[1]
 		password := GetPassword()
 		directory := ""
-		if !strings.HasPrefix(args[2], "-") {
+		if len(args) > 3 && !strings.HasPrefix(args[2], "-") {
 			directory = args[2]
 		} else {
 			urlp, err := gitu.Parse(gitUrl)
